@@ -257,6 +257,125 @@ embedder.embed_from_file(
 )
 ```
 
+## 📝 Examples
+
+### Quick Start with Sample Files
+
+The `/examples` directory contains sample media files for testing:
+
+```bash
+# Navigate to examples directory
+cd examples/
+
+# Test embedding a command in the sample audio file
+ultrasonic-agentics embed -i sample_audio.mp3 -o audio_with_command.mp3 -c "hello world"
+
+# Decode the embedded command
+ultrasonic-agentics decode -i audio_with_command.mp3
+
+# Test with the sample video file
+ultrasonic-agentics embed -i sample_video.mp4 -o video_with_command.mp4 -c "AI: process video"
+ultrasonic-agentics decode -i video_with_command.mp4
+```
+
+### Python Examples
+
+#### Basic Encoding/Decoding
+```python
+from agentic_commands_stego.embed.audio_embedder import AudioEmbedder
+from agentic_commands_stego.decode.audio_decoder import AudioDecoder
+
+# Create embedder with a specific key
+key = b'my-secret-key-32bytes-padding!!!'  # 32 bytes for AES-256
+embedder = AudioEmbedder(key=key)
+decoder = AudioDecoder(key=key)
+
+# Embed a command
+success = embedder.embed_file(
+    'examples/sample_audio.mp3',
+    'output_with_command.mp3',
+    'execute: deploy --version 2.0'
+)
+
+# Decode the command
+command = decoder.decode_file('output_with_command.mp3')
+print(f"Decoded: {command}")
+```
+
+#### Real-time Audio Processing
+```python
+from agentic_commands_stego.decode.audio_decoder import AudioDecoder
+
+# Set up real-time listener
+decoder = AudioDecoder(key=your_key)
+
+def on_command_detected(command):
+    print(f"Detected command: {command}")
+    # Process the command
+    if command.startswith("execute:"):
+        action = command.split(":", 1)[1]
+        # Perform action
+
+# Start listening through microphone
+decoder.start_listening(callback=on_command_detected)
+```
+
+#### Batch Processing
+```python
+import os
+from agentic_commands_stego.embed.audio_embedder import AudioEmbedder
+
+embedder = AudioEmbedder()
+
+# Process multiple files
+audio_files = ['file1.mp3', 'file2.wav', 'file3.ogg']
+commands = ['cmd1', 'cmd2', 'cmd3']
+
+for audio_file, command in zip(audio_files, commands):
+    output = f"secured_{audio_file}"
+    embedder.embed_file(audio_file, output, command)
+    print(f"Processed: {audio_file} -> {output}")
+```
+
+#### Custom Frequency Configuration
+```python
+from agentic_commands_stego.embed.ultrasonic_encoder import UltrasonicEncoder
+from agentic_commands_stego.decode.ultrasonic_decoder import UltrasonicDecoder
+
+# Use lower frequencies (17-18 kHz) for better speaker compatibility
+encoder = UltrasonicEncoder(
+    freq_0=17000,  # Frequency for bit '0'
+    freq_1=18000,  # Frequency for bit '1'
+    amplitude=0.15,  # Slightly higher amplitude
+    bit_duration=0.02  # Slower bit rate for reliability
+)
+
+decoder = UltrasonicDecoder(
+    freq_0=17000,
+    freq_1=18000,
+    detection_threshold=0.05
+)
+
+# Encode and decode
+signal = encoder.encode_payload(b"low-freq test")
+decoded = decoder.decode_payload(signal)
+```
+
+### Sample Files Available
+
+| File | Description | Duration | Use Case |
+|------|-------------|----------|----------|
+| `sample_audio.mp3` | Crowd cheering sound | 27.74s | Testing longer commands |
+| `sample_video.mp4` | Big Buck Bunny clip | 5.31s | Video embedding tests |
+
+### More Examples
+
+Check out the `/examples` directory for more detailed examples:
+- `basic_encoding.py` - Comprehensive encoding/decoding tests
+- `audio_file_processing.py` - Batch processing examples
+- `api_client.py` - REST API usage examples
+- `test_hello_world.py` - Simple embedding verification
+
 ## 🤝 Contributing
 
 We welcome contributions!

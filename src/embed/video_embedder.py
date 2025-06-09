@@ -84,12 +84,20 @@ class VideoEmbedder:
                 raise ValueError("Input video has no audio track")
             
             # Extract audio to temporary file
-            video.audio.write_audiofile(
-                temp_audio_input,
-                codec='pcm_s16le',  # Uncompressed for quality
-                verbose=False,
-                logger=None
-            )
+            try:
+                # Try MoviePy 2.x syntax first
+                video.audio.write_audiofile(
+                    temp_audio_input,
+                    codec='pcm_s16le'  # Uncompressed for quality
+                )
+            except TypeError:
+                # Fall back to older syntax if needed
+                video.audio.write_audiofile(
+                    temp_audio_input,
+                    codec='pcm_s16le',
+                    verbose=False,
+                    logger=None
+                )
             
             # Embed command in audio
             self.audio_embedder.embed_file(
@@ -104,23 +112,33 @@ class VideoEmbedder:
             new_audio = AudioFileClip(temp_audio_output)
             
             # Replace audio in video
-            final_video = video.set_audio(new_audio)
+            try:
+                # Try MoviePy 2.x syntax first
+                final_video = video.with_audio(new_audio)
+            except AttributeError:
+                # Fall back to older syntax if needed
+                final_video = video.set_audio(new_audio)
             
             # Prepare output parameters
             output_params = {
                 'codec': 'libx264',
                 'audio_codec': 'aac',
                 'temp_audiofile': os.path.join(temp_dir, f"temp_audiofile_{os.getpid()}.m4a"),
-                'remove_temp': True,
-                'verbose': False,
-                'logger': None
+                'remove_temp': True
             }
             
             if video_bitrate:
                 output_params['bitrate'] = video_bitrate
             
             # Export final video
-            final_video.write_videofile(output_path, **output_params)
+            try:
+                # Try MoviePy 2.x syntax first
+                final_video.write_videofile(output_path, **output_params)
+            except TypeError:
+                # Fall back to older syntax if needed
+                output_params['verbose'] = False
+                output_params['logger'] = None
+                final_video.write_videofile(output_path, **output_params)
             
             # Clean up
             video.close()

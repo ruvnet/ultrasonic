@@ -74,12 +74,20 @@ class VideoDecoder:
                 return None
             
             # Extract audio to temporary file
-            video.audio.write_audiofile(
-                temp_audio,
-                codec='pcm_s16le',  # Uncompressed for quality
-                verbose=False,
-                logger=None
-            )
+            try:
+                # Try MoviePy 2.x syntax first
+                video.audio.write_audiofile(
+                    temp_audio,
+                    codec='pcm_s16le'  # Uncompressed for quality
+                )
+            except TypeError:
+                # Fall back to older syntax if needed
+                video.audio.write_audiofile(
+                    temp_audio,
+                    codec='pcm_s16le',
+                    verbose=False,
+                    logger=None
+                )
             
             # Decode command from audio
             command = self.audio_decoder.decode_file(temp_audio)
