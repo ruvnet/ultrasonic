@@ -38,6 +38,14 @@ Ultrasonic Agentics is a cutting-edge steganography framework that embeds encryp
 - **Medical Device Control**: Secure command transmission in healthcare environments
 - **Proximity Detection**: Device-to-device communication for contact tracing and asset tracking
 
+## 📚 Documentation
+
+- [Getting Started Guide](docs/getting-started.md)
+- [API Reference](agentic_commands_stego/docs/api-reference.md)
+- [Security Best Practices](agentic_commands_stego/docs/security.md)
+- [MCP Integration](agentic_commands_stego/docs/mcp-integration.md)
+- [Examples & Tutorials](agentic_commands_stego/examples/)
+
 
 ## 🏗️ Architecture
 
@@ -159,13 +167,6 @@ ultrasonic-api --host 0.0.0.0 --port 8000 --workers 4
 - `--verbose`: Detailed output
 - `--help`: Show help for any command
 
-## 📚 Documentation
-
-- [Getting Started Guide](docs/getting-started.md)
-- [API Reference](docs/api-reference.md)
-- [Security Best Practices](docs/security.md)
-- [MCP Integration](docs/mcp-integration.md)
-- [Examples & Tutorials](agentic_commands_stego/examples/)
 
 ### Basic Usage
 
@@ -256,7 +257,7 @@ embedder.embed_from_file(
 
 ## 🤝 Contributing
 
-We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions!
 
 ```bash
 # Development setup
@@ -297,6 +298,6 @@ Built with cutting-edge audio processing libraries including NumPy, SciPy, PyDub
 <p align="center">
   <b>Ready to hide commands in plain sound?</b><br>
   <a href="https://github.com/ultrasonic-agentics/ultrasonic-agentics">Get Started</a> •
-  <a href="https://github.com/ultrasonic-agentics/ultrasonic-agentics/docs">Read Docs</a> •
+  <a href="agentic_commands_stego/docs/">Read Docs</a> •
   <a href="https://github.com/ultrasonic-agentics/ultrasonic-agentics/issues">Report Bug</a>
 </p>
