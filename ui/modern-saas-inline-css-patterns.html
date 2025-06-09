@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern SaaS Landing Page - Inline CSS Patterns</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333;">
+
+<!-- 1. HERO SECTIONS WITH PROPER TYPOGRAPHY HIERARCHY -->
+<section style="
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+">
+    <!-- Hero Pattern 1: Centered with Strong Typography Hierarchy -->
+    <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+        <h1 style="
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin: 0 0 24px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        ">Transform Your Business with AI-Powered Solutions</h1>
+        
+        <p style="
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            margin: 0 auto 32px;
+            max-width: 600px;
+            opacity: 0.95;
+            line-height: 1.5;
+        ">Streamline operations, boost productivity, and scale your business with our cutting-edge platform trusted by 10,000+ companies worldwide.</p>
+        
+        <div style="
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        ">
+            <button style="
+                background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+                color: white;
+                border: none;
+                padding: 16px 32px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
+                text-decoration: none;
+                display: inline-block;
+            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(238, 90, 36, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(238, 90, 36, 0.4)'">
+                Start Free Trial
+            </button>
+            
+            <button style="
+                background: rgba(255,255,255,0.1);
+                color: white;
+                border: 2px solid rgba(255,255,255,0.3);
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+            " onmouseover="this.style.background='rgba(255,255,255,0.2)'; this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)'">
+                Watch Demo
+            </button>
+        </div>
+        
+        <p style="
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        ">No credit card required • 14-day free trial • Cancel anytime</p>
+    </div>
+    
+    <!-- Background decoration -->
+    <div style="
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        pointer-events: none;
+    "></div>
+</section>
+
+<!-- Hero Pattern 2: Split Layout (Text Left, Visual Right) -->
+<section style="
+    padding: 80px 20px;
+    background: #fafbfc;
+    overflow: hidden;
+">
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    " data-responsive="grid-template-columns: 1fr;">
+        <div>
+            <h2 style="
+                font-size: clamp(2rem, 4vw, 3.5rem);
+                font-weight: 700;
+                margin: 0 0 20px;
+                line-height: 1.2;
+                color: #1a1a1a;
+                letter-spacing: -0.01em;
+            ">Revolutionize Your Workflow</h2>
+            
+            <p style="
+                font-size: 1.25rem;
+                color: #666;
+                margin: 0 0 32px;
+                line-height: 1.6;
+            ">Experience the future of productivity with AI-driven automation that adapts to your business needs.</p>
+            
+            <ul style="
+                list-style: none;
+                padding: 0;
+                margin: 0 0 32px;
+            ">
+                <li style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 12px;
+                    font-size: 1.1rem;
+                    color: #444;
+                ">
+                    <span style="
+                        width: 20px;
+                        height: 20px;
+                        background: linear-gradient(135deg, #10ac84, #00a085);
+                        border-radius: 50%;
+                        margin-right: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 12px;
+                        flex-shrink: 0;
+                    ">✓</span>
+                    Increase productivity by 300%
+                </li>
+                <li style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 12px;
+                    font-size: 1.1rem;
+                    color: #444;
+                ">
+                    <span style="
+                        width: 20px;
+                        height: 20px;
+                        background: linear-gradient(135deg, #10ac84, #00a085);
+                        border-radius: 50%;
+                        margin-right: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 12px;
+                        flex-shrink: 0;
+                    ">✓</span>
+                    Reduce operational costs by 40%
+                </li>
+                <li style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 12px;
+                    font-size: 1.1rem;
+                    color: #444;
+                ">
+                    <span style="
+                        width: 20px;
+                        height: 20px;
+                        background: linear-gradient(135deg, #10ac84, #00a085);
+                        border-radius: 50%;
+                        margin-right: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 12px;
+                        flex-shrink: 0;
+                    ">✓</span>
+                    Scale without limits
+                </li>
+            </ul>
+        </div>
+        
+        <div style="
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(240, 147, 251, 0.3);
+        ">
+            <h3 style="margin: 0 0 16px; font-size: 1.5rem;">Dashboard Preview</h3>
+            <p style="margin: 0; opacity: 0.9;">Interactive demo placeholder</p>
+        </div>
+    </div>
+</section>
+
+<!-- 2. FEATURE CARDS WITH CONSISTENT SPACING AND STYLING -->
+<section style="
+    padding: 80px 20px;
+    background: white;
+">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 64px;">
+            <h2 style="
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                margin: 0 0 16px;
+                color: #1a1a1a;
+            ">Powerful Features</h2>
+            <p style="
+                font-size: 1.2rem;
+                color: #666;
+                margin: 0;
+                max-width: 600px;
+                margin: 0 auto;
+            ">Everything you need to scale your business efficiently</p>
+        </div>
+        
+        <!-- Feature Cards Grid -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        ">
+            <!-- Feature Card 1 -->
+            <div style="
+                background: white;
+                border-radius: 16px;
+                padding: 32px;
+                box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+                border: 1px solid #f0f0f0;
+                position: relative;
+                overflow: hidden;
+            " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 25px rgba(0,0,0,0.08)'">
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                    color: white;
+                    font-size: 24px;
+                ">🚀</div>
+                
+                <h3 style="
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin: 0 0 12px;
+                    color: #1a1a1a;
+                ">Lightning Fast</h3>
+                
+                <p style="
+                    color: #666;
+                    margin: 0 0 20px;
+                    line-height: 1.6;
+                    font-size: 1rem;
+                ">Process millions of records in seconds with our optimized infrastructure built for scale.</p>
+                
+                <a href="#" style="
+                    color: #667eea;
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.color='#764ba2'" onmouseout="this.style.color='#667eea'">
+                    Learn more →
+                </a>
+            </div>
+            
+            <!-- Feature Card 2 -->
+            <div style="
+                background: white;
+                border-radius: 16px;
+                padding: 32px;
+                box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+                border: 1px solid #f0f0f0;
+                position: relative;
+                overflow: hidden;
+            " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 25px rgba(0,0,0,0.08)'">
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                    color: white;
+                    font-size: 24px;
+                ">🔒</div>
+                
+                <h3 style="
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin: 0 0 12px;
+                    color: #1a1a1a;
+                ">Enterprise Security</h3>
+                
+                <p style="
+                    color: #666;
+                    margin: 0 0 20px;
+                    line-height: 1.6;
+                    font-size: 1rem;
+                ">Bank-grade encryption with SOC 2 Type II compliance ensuring your data stays protected.</p>
+                
+                <a href="#" style="
+                    color: #ff6b6b;
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.color='#ee5a24'" onmouseout="this.style.color='#ff6b6b'">
+                    Learn more →
+                </a>
+            </div>
+            
+            <!-- Feature Card 3 -->
+            <div style="
+                background: white;
+                border-radius: 16px;
+                padding: 32px;
+                box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+                border: 1px solid #f0f0f0;
+                position: relative;
+                overflow: hidden;
+            " onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 25px rgba(0,0,0,0.08)'">
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: linear-gradient(135deg, #10ac84 0%, #00a085 100%);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 24px;
+                    color: white;
+                    font-size: 24px;
+                ">⚡</div>
+                
+                <h3 style="
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin: 0 0 12px;
+                    color: #1a1a1a;
+                ">Smart Automation</h3>
+                
+                <p style="
+                    color: #666;
+                    margin: 0 0 20px;
+                    line-height: 1.6;
+                    font-size: 1rem;
+                ">AI-powered workflows that learn from your behavior and optimize processes automatically.</p>
+                
+                <a href="#" style="
+                    color: #10ac84;
+                    text-decoration: none;
+                    font-weight: 600;
+                    display: inline-flex;
+                    align-items: center;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.color='#00a085'" onmouseout="this.style.color='#10ac84'">
+                    Learn more →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. CTA BUTTONS WITH MODERN GRADIENTS AND HOVER EFFECTS -->
+<section style="
+    padding: 80px 20px;
+    background: #f8f9fa;
+">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2 style="
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 16px;
+            color: #1a1a1a;
+        ">Modern CTA Button Styles</h2>
+        
+        <p style="
+            font-size: 1.2rem;
+            color: #666;
+            margin: 0 0 48px;
+        ">Interactive examples of modern button designs</p>
+        
+        <div style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+        ">
+            <!-- Gradient Button -->
+            <button style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background-size: 200% 200%;
+                color: white;
+                border: none;
+                padding: 16px 32px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.4s ease;
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+                position: relative;
+                overflow: hidden;
+            " onmouseover="
+                this.style.backgroundPosition='right center';
+                this.style.transform='translateY(-2px)';
+                this.style.boxShadow='0 8px 25px rgba(102, 126, 234, 0.6)';
+            " onmouseout="
+                this.style.backgroundPosition='left center';
+                this.style.transform='translateY(0)';
+                this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)';
+            ">
+                Gradient Shift
+            </button>
+            
+            <!-- Neon Glow Button -->
+            <button style="
+                background: #1a1a1a;
+                color: #00ff88;
+                border: 2px solid #00ff88;
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-shadow: 0 0 10px #00ff88;
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            " onmouseover="
+                this.style.backgroundColor='#00ff88';
+                this.style.color='#1a1a1a';
+                this.style.textShadow='none';
+                this.style.boxShadow='0 0 30px rgba(0, 255, 136, 0.8)';
+            " onmouseout="
+                this.style.backgroundColor='#1a1a1a';
+                this.style.color='#00ff88';
+                this.style.textShadow='0 0 10px #00ff88';
+                this.style.boxShadow='0 0 20px rgba(0, 255, 136, 0.3)';
+            ">
+                Neon Glow
+            </button>
+            
+            <!-- 3D Push Button -->
+            <button style="
+                background: linear-gradient(145deg, #ff6b6b, #ee5a24);
+                color: white;
+                border: none;
+                padding: 16px 32px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 12px;
+                cursor: pointer;
+                transition: all 0.15s ease;
+                box-shadow: 
+                    0 8px 16px rgba(238, 90, 36, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                transform: translateY(0);
+            " onmousedown="
+                this.style.transform='translateY(4px)';
+                this.style.boxShadow='0 4px 8px rgba(238, 90, 36, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+            " onmouseup="
+                this.style.transform='translateY(0)';
+                this.style.boxShadow='0 8px 16px rgba(238, 90, 36, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+            " onmouseleave="
+                this.style.transform='translateY(0)';
+                this.style.boxShadow='0 8px 16px rgba(238, 90, 36, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+            ">
+                3D Push
+            </button>
+            
+            <!-- Liquid Fill Button -->
+            <button style="
+                background: transparent;
+                color: #667eea;
+                border: 2px solid #667eea;
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            " onmouseover="
+                this.style.color='white';
+                this.style.borderColor='#764ba2';
+            " onmouseout="
+                this.style.color='#667eea';
+                this.style.borderColor='#667eea';
+            " onmouseenter="
+                if (!this.querySelector('.liquid-fill')) {
+                    const fill = document.createElement('div');
+                    fill.className = 'liquid-fill';
+                    fill.style.cssText = `
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        transition: left 0.4s ease;
+                        z-index: -1;
+                    `;
+                    this.appendChild(fill);
+                    setTimeout(() => fill.style.left = '0', 10);
+                }
+            " onmouseleave="
+                const fill = this.querySelector('.liquid-fill');
+                if (fill) {
+                    fill.style.left = '100%';
+                    setTimeout(() => fill.remove(), 400);
+                }
+            ">
+                Liquid Fill
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- 4. HEADER NAVIGATION WITH PROPER ALIGNMENT -->
+<header style="
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+">
+    <nav style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+    ">
+        <!-- Logo -->
+        <div style="
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        ">
+            <div style="
+                width: 32px;
+                height: 32px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 8px;
+                margin-right: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+            ">S</div>
+            SaaSApp
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div style="
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        " id="desktop-nav">
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                position: relative;
+            " onmouseover="this.style.color='#667eea'" onmouseout="this.style.color='#333'">Features</a>
+            
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                position: relative;
+            " onmouseover="this.style.color='#667eea'" onmouseout="this.style.color='#333'">Pricing</a>
+            
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                position: relative;
+            " onmouseover="this.style.color='#667eea'" onmouseout="this.style.color='#333'">Resources</a>
+            
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                position: relative;
+            " onmouseover="this.style.color='#667eea'" onmouseout="this.style.color='#333'">Company</a>
+        </div>
+        
+        <!-- CTA Section -->
+        <div style="
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        " id="nav-cta">
+            <a href="#" style="
+                text-decoration: none;
+                color: #667eea;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            " onmouseover="this.style.color='#764ba2'" onmouseout="this.style.color='#667eea'">Log in</a>
+            
+            <button style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-weight: 600;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                Get Started
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button style="
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: #333;
+        " id="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div style="
+        display: none;
+        background: white;
+        border-top: 1px solid #e5e5e5;
+        padding: 20px;
+    " id="mobile-menu">
+        <div style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        ">
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            ">Features</a>
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            ">Pricing</a>
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            ">Resources</a>
+            <a href="#" style="
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                padding: 12px 0;
+                border-bottom: 1px solid #f0f0f0;
+            ">Company</a>
+            <div style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 16px;
+            ">
+                <a href="#" style="
+                    text-decoration: none;
+                    color: #667eea;
+                    font-weight: 600;
+                    text-align: center;
+                    padding: 12px;
+                ">Log in</a>
+                <button style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border: none;
+                    padding: 12px 20px;
+                    font-weight: 600;
+                    border-radius: 6px;
+                    cursor: pointer;
+                ">Get Started</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 5. FOOTER STYLING WITH BRAND CONSISTENCY -->
+<footer style="
+    background: #1a1a1a;
+    color: white;
+    padding: 80px 20px 40px;
+    margin-top: 80px;
+">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <!-- Main Footer Content -->
+        <div style="
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        " data-responsive="grid-template-columns: 1fr;">
+            <!-- Brand Column -->
+            <div>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    margin-bottom: 16px;
+                ">
+                    <div style="
+                        width: 32px;
+                        height: 32px;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        border-radius: 8px;
+                        margin-right: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">S</div>
+                    SaaSApp
+                </div>
+                
+                <p style="
+                    color: #999;
+                    margin: 0 0 24px;
+                    line-height: 1.6;
+                    max-width: 300px;
+                ">Empowering businesses worldwide with AI-powered solutions that drive growth and efficiency.</p>
+                
+                <div style="
+                    display: flex;
+                    gap: 16px;
+                ">
+                    <a href="#" style="
+                        width: 40px;
+                        height: 40px;
+                        background: rgba(255,255,255,0.1);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.background='rgba(102, 126, 234, 0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="#" style="
+                        width: 40px;
+                        height: 40px;
+                        background: rgba(255,255,255,0.1);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.background='rgba(102, 126, 234, 0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="#" style="
+                        width: 40px;
+                        height: 40px;
+                        background: rgba(255,255,255,0.1);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        text-decoration: none;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.background='rgba(102, 126, 234, 0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.747 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.99C24.007 5.367 18.641.001 12.017.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Product Links -->
+            <div>
+                <h4 style="
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin: 0 0 20px;
+                    color: white;
+                ">Product</h4>
+                <ul style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                ">
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Features</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Integrations</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">API</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Security</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Solutions Links -->
+            <div>
+                <h4 style="
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin: 0 0 20px;
+                    color: white;
+                ">Solutions</h4>
+                <ul style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                ">
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">For Startups</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">For Enterprise</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">For Teams</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Case Studies</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Resources Links -->
+            <div>
+                <h4 style="
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin: 0 0 20px;
+                    color: white;
+                ">Resources</h4>
+                <ul style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                ">
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Documentation</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Blog</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Help Center</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Community</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Company Links -->
+            <div>
+                <h4 style="
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    margin: 0 0 20px;
+                    color: white;
+                ">Company</h4>
+                <ul style="
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                ">
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">About</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Careers</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Contact</a>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <a href="#" style="
+                            color: #999;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Partners</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div style="
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 48px;
+            text-align: center;
+        ">
+            <h3 style="
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin: 0 0 8px;
+                color: white;
+            ">Stay Updated</h3>
+            <p style="
+                color: #999;
+                margin: 0 0 24px;
+            ">Get the latest updates and insights delivered to your inbox.</p>
+            
+            <div style="
+                display: flex;
+                gap: 12px;
+                max-width: 400px;
+                margin: 0 auto;
+            ">
+                <input type="email" placeholder="Enter your email" style="
+                    flex: 1;
+                    padding: 12px 16px;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 6px;
+                    background: rgba(255,255,255,0.1);
+                    color: white;
+                    font-size: 1rem;
+                ">
+                <button style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    font-weight: 600;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div style="
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        ">
+            <p style="
+                color: #999;
+                margin: 0;
+                font-size: 0.9rem;
+            ">© 2024 SaaSApp. All rights reserved.</p>
+            
+            <div style="
+                display: flex;
+                gap: 24px;
+                flex-wrap: wrap;
+            ">
+                <a href="#" style="
+                    color: #999;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    transition: color 0.3s ease;
+                " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Privacy Policy</a>
+                <a href="#" style="
+                    color: #999;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    transition: color 0.3s ease;
+                " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Terms of Service</a>
+                <a href="#" style="
+                    color: #999;
+                    text-decoration: none;
+                    font-size: 0.9rem;
+                    transition: color 0.3s ease;
+                " onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 6. RESPONSIVE GRID LAYOUTS WITHOUT CSS FRAMEWORKS -->
+<section style="
+    padding: 80px 20px;
+    background: white;
+">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 16px;
+            text-align: center;
+            color: #1a1a1a;
+        ">Responsive Grid Examples</h2>
+        
+        <p style="
+            font-size: 1.2rem;
+            color: #666;
+            margin: 0 0 48px;
+            text-align: center;
+        ">Grid layouts that adapt seamlessly across all devices</p>
+        
+        <!-- Auto-fit Grid -->
+        <div style="margin-bottom: 48px;">
+            <h3 style="
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin: 0 0 20px;
+                color: #1a1a1a;
+            ">Auto-fit Grid (Cards)</h3>
+            
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 24px;
+            ">
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    text-align: center;
+                    border: 1px solid #e9ecef;
+                ">
+                    <h4 style="margin: 0 0 12px; color: #1a1a1a;">Card 1</h4>
+                    <p style="margin: 0; color: #666;">Auto-fitting grid item</p>
+                </div>
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    text-align: center;
+                    border: 1px solid #e9ecef;
+                ">
+                    <h4 style="margin: 0 0 12px; color: #1a1a1a;">Card 2</h4>
+                    <p style="margin: 0; color: #666;">Auto-fitting grid item</p>
+                </div>
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    text-align: center;
+                    border: 1px solid #e9ecef;
+                ">
+                    <h4 style="margin: 0 0 12px; color: #1a1a1a;">Card 3</h4>
+                    <p style="margin: 0; color: #666;">Auto-fitting grid item</p>
+                </div>
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    text-align: center;
+                    border: 1px solid #e9ecef;
+                ">
+                    <h4 style="margin: 0 0 12px; color: #1a1a1a;">Card 4</h4>
+                    <p style="margin: 0; color: #666;">Auto-fitting grid item</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Asymmetric Grid -->
+        <div style="margin-bottom: 48px;">
+            <h3 style="
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin: 0 0 20px;
+                color: #1a1a1a;
+            ">Asymmetric Grid Layout</h3>
+            
+            <div style="
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-rows: auto auto;
+                gap: 20px;
+                height: 400px;
+            " data-responsive="grid-template-columns: 1fr; grid-template-rows: auto;">
+                <div style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 12px;
+                    padding: 32px;
+                    color: white;
+                    grid-row: span 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                ">
+                    <h4 style="margin: 0 0 16px; font-size: 1.5rem;">Featured Content</h4>
+                    <p style="margin: 0; opacity: 0.9;">This takes up more space with a 2fr width and spans 2 rows</p>
+                </div>
+                
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    border: 1px solid #e9ecef;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <h4 style="margin: 0; color: #1a1a1a;">Item 1</h4>
+                </div>
+                
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    border: 1px solid #e9ecef;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <h4 style="margin: 0; color: #1a1a1a;">Item 2</h4>
+                </div>
+                
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    border: 1px solid #e9ecef;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <h4 style="margin: 0; color: #1a1a1a;">Item 3</h4>
+                </div>
+                
+                <div style="
+                    background: #f8f9fa;
+                    border-radius: 12px;
+                    padding: 24px;
+                    border: 1px solid #e9ecef;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <h4 style="margin: 0; color: #1a1a1a;">Item 4</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Mobile menu toggle functionality
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopNav = document.getElementById('desktop-nav');
+    const navCta = document.getElementById('nav-cta');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    
+    if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+        mobileMenu.style.display = 'block';
+    } else {
+        mobileMenu.style.display = 'none';
+    }
+}
+
+// Responsive behavior
+function handleResize() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopNav = document.getElementById('desktop-nav');
+    const navCta = document.getElementById('nav-cta');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    
+    if (window.innerWidth <= 768) {
+        // Mobile view
+        desktopNav.style.display = 'none';
+        navCta.style.display = 'none';
+        mobileBtn.style.display = 'block';
+    } else {
+        // Desktop view
+        desktopNav.style.display = 'flex';
+        navCta.style.display = 'flex';
+        mobileBtn.style.display = 'none';
+        mobileMenu.style.display = 'none';
+    }
+    
+    // Handle responsive grid
+    const responsiveGrids = document.querySelectorAll('[data-responsive]');
+    responsiveGrids.forEach(grid => {
+        if (window.innerWidth <= 768) {
+            const responsiveStyle = grid.getAttribute('data-responsive');
+            grid.style.gridTemplateColumns = responsiveStyle.includes('grid-template-columns') 
+                ? responsiveStyle.split(';')[0].split(':')[1].trim()
+                : grid.style.gridTemplateColumns;
+            if (responsiveStyle.includes('grid-template-rows')) {
+                grid.style.gridTemplateRows = responsiveStyle.split(';')[1].split(':')[1].trim();
+            }
+        } else {
+            // Reset to original grid
+            grid.style.gridTemplateColumns = '';
+            grid.style.gridTemplateRows = '';
+        }
+    });
+}
+
+// Initialize responsive behavior
+window.addEventListener('resize', handleResize);
+window.addEventListener('load', handleResize);
+
+// Input placeholder styling for dark backgrounds
+document.addEventListener('DOMContentLoaded', function() {
+    const style = document.createElement('style');
+    style.textContent = `
+        input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        input:focus {
+            outline: 2px solid rgba(102, 126, 234, 0.5);
+            outline-offset: 2px;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
+
+</body>
+</html>

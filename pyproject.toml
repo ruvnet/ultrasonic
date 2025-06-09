@@ -1,0 +1,208 @@
+[build-system]
+requires = ["setuptools>=60", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ultrasonic-agentics"
+version = "1.0.0"
+description = "Steganography framework for ultrasonic agentic command transmission"
+readme = "src/README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Ultrasonic Agentics Team", email = "contact@ultrasonic-agentics.org"}
+]
+maintainers = [
+    {name = "Ultrasonic Agentics Team", email = "contact@ultrasonic-agentics.org"}
+]
+keywords = [
+    "steganography", "ultrasonic", "audio", "video", "agentic", "commands",
+    "covert", "communication", "frequency", "embedding", "extraction",
+    "cryptography", "security", "AI", "automation"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy>=1.7.0",
+    "pydub>=0.25.0",
+    "moviepy>=1.0.3",
+    "pycryptodome>=3.15.0",
+    "sounddevice>=0.4.4",
+    "fastapi>=0.68.0",
+    "uvicorn>=0.15.0",
+    "python-multipart>=0.0.5",
+    "ffmpeg-python>=0.2.0",
+    "librosa>=0.9.0",
+    "opencv-python>=4.5.0",
+    "mcp>=1.9.0",
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "click>=8.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0.0",
+    "pytest-cov>=2.12.0",
+    "pytest-asyncio>=0.15.0",
+    "black>=21.0.0",
+    "flake8>=3.9.0",
+    "mypy>=0.910",
+    "isort>=5.9.0",
+    "pre-commit>=2.15.0",
+]
+docs = [
+    "sphinx>=4.0.0",
+    "sphinx-rtd-theme>=0.5.0",
+    "myst-parser>=0.15.0",
+]
+examples = [
+    "matplotlib>=3.3.0",
+    "jupyter>=1.0.0",
+    "ipython>=7.0.0",
+]
+performance = [
+    "numba>=0.54.0",
+    "cython>=0.29.0",
+]
+all = [
+    "pytest>=6.0.0", "pytest-cov>=2.12.0", "pytest-asyncio>=0.15.0",
+    "black>=21.0.0", "flake8>=3.9.0", "mypy>=0.910", "isort>=5.9.0",
+    "sphinx>=4.0.0", "sphinx-rtd-theme>=0.5.0", "myst-parser>=0.15.0",
+    "matplotlib>=3.3.0", "jupyter>=1.0.0", "ipython>=7.0.0",
+    "numba>=0.54.0", "cython>=0.29.0", "pre-commit>=2.15.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ultrasonic-agentics/ultrasonic-agentics"
+Documentation = "https://github.com/ultrasonic-agentics/ultrasonic-agentics/docs"
+Repository = "https://github.com/ultrasonic-agentics/ultrasonic-agentics"
+"Bug Tracker" = "https://github.com/ultrasonic-agentics/ultrasonic-agentics/issues"
+Changelog = "https://github.com/ultrasonic-agentics/ultrasonic-agentics/blob/main/CHANGELOG.md"
+Examples = "https://github.com/ultrasonic-agentics/ultrasonic-agentics/tree/main/agentic_commands_stego/examples"
+
+[project.scripts]
+ultrasonic-agentics = "agentic_commands_stego.mcp_tools.cli:main"
+ultrasonic-server = "agentic_commands_stego.mcp_tools.server:run_server"
+ultrasonic-api = "agentic_commands_stego.server.api:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agentic_commands_stego*"]
+exclude = ["tests*", "examples*"]
+
+[tool.setuptools.package-data]
+agentic_commands_stego = [
+    "README.md",
+    "requirements.txt",
+    "docs/*.md",
+    "examples/*.py",
+    "examples/README.md",
+    "tests/*.py",
+]
+
+# Development tools configuration
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+known_first_party = ["agentic_commands_stego"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pydub.*",
+    "librosa.*",
+    "cv2.*",
+    "scipy.*",
+    "numpy.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["agentic_commands_stego/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["agentic_commands_stego"]
+omit = [
+    "*/tests/*",
+    "*/examples/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

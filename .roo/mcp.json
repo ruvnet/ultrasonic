@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "claude-code": {
+      "command": "claude",
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "env": {},
+      "alwaysAllow": [
+        "Task",
+        "Bash",
+        "Glob",
+        "Grep",
+        "LS",
+        "Read",
+        "MultiEdit",
+        "Edit",
+        "Write",
+        "NotebookRead",
+        "NotebookEdit",
+        "WebFetch",
+        "TodoRead",
+        "TodoWrite",
+        "WebSearch"
+      ]
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "alwaysAllow": [
+        "resolve-library-id",
+        "get-library-docs"
+      ],
+      "timeout": 300
+    }
+  }
+}

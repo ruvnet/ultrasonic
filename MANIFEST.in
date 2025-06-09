@@ -1,0 +1,70 @@
+# Manifest file for ultrasonic-agentics PyPI package
+
+# Include package metadata and configuration
+include README.md
+include LICENSE
+include MANIFEST.in
+include setup.py
+include pyproject.toml
+include CHANGELOG.md
+
+# Include package documentation
+recursive-include agentic_commands_stego/docs *.md *.rst *.txt
+include agentic_commands_stego/README.md
+
+# Include examples and usage guides
+recursive-include agentic_commands_stego/examples *.py *.md *.txt *.json
+include CLI_USAGE.md
+
+# Include tests (for development installations)
+recursive-include agentic_commands_stego/tests *.py
+include agentic_commands_stego/conftest.py
+
+# Include requirements and configuration
+include agentic_commands_stego/requirements.txt
+
+# Include MCP schemas and tools
+recursive-include agentic_commands_stego/mcp_tools *.py
+recursive-include agentic_commands_stego/mcp_tools/schemas *.py
+
+# Include convenience scripts
+include agentic-stego
+include run_mcp_server.py
+include run_api_server.py
+
+# Exclude development files
+exclude .gitignore
+exclude *.pyc
+exclude .DS_Store
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.orig
+recursive-exclude * *.rej
+recursive-exclude * .git*
+
+# Exclude temporary files
+exclude *.tmp
+exclude *.temp
+exclude *~
+
+# Exclude IDE files
+exclude .vscode/
+exclude .idea/
+exclude *.sublime-*
+
+# Exclude build directories
+prune build/
+prune dist/
+prune *.egg-info/
+
+# Exclude test artifacts
+exclude coverage/
+exclude .coverage
+exclude .pytest_cache/
+exclude .tox/
+
+# Exclude node modules (if any)
+prune node_modules/
+
+# Include specific coordination documentation that might be useful
+include coordination/COORDINATION_GUIDE.md

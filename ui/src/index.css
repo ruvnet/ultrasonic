@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/* Modern CSS Custom Properties with improved naming and organization */
+@layer base {
+  :root {
+    /* Color System - Semantic naming with HSL values */
+    --color-background: 0 0% 100%;
+    --color-foreground: 222.2 84% 4.9%;
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 222.2 84% 4.9%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 222.2 84% 4.9%;
+    --color-primary: 222.2 47.4% 11.2%;
+    --color-primary-foreground: 210 40% 98%;
+    --color-secondary: 210 40% 96.1%;
+    --color-secondary-foreground: 222.2 47.4% 11.2%;
+    --color-muted: 210 40% 96.1%;
+    --color-muted-foreground: 215.4 16.3% 46.9%;
+    --color-accent: 210 40% 96.1%;
+    --color-accent-foreground: 222.2 47.4% 11.2%;
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 214.3 31.8% 91.4%;
+    --color-input: 214.3 31.8% 91.4%;
+    --color-ring: 222.2 84% 4.9%;
+    
+    /* Chart Colors - Data visualization palette */
+    --color-chart-1: 12 76% 61%;
+    --color-chart-2: 173 58% 39%;
+    --color-chart-3: 197 37% 24%;
+    --color-chart-4: 43 74% 66%;
+    --color-chart-5: 27 87% 67%;
+    
+    /* Spacing System - Consistent scale */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Border Radius - Consistent rounding */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius: var(--radius-lg);
+    
+    /* Typography Scale - Fluid typography */
+    --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --font-size-md: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+    --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    
+    /* Animation Durations */
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 400ms;
+    
+    /* Z-index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1010;
+    --z-fixed: 1020;
+    --z-modal: 1030;
+    --z-popover: 1040;
+    --z-tooltip: 1050;
+    
+    /* Backward compatibility aliases */
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+  }
+
+  /* Dark theme with improved contrast and accessibility */
+  .dark {
+    --color-background: 222.2 84% 4.9%;
+    --color-foreground: 210 40% 98%;
+    --color-card: 222.2 84% 4.9%;
+    --color-card-foreground: 210 40% 98%;
+    --color-popover: 222.2 84% 4.9%;
+    --color-popover-foreground: 210 40% 98%;
+    --color-primary: 210 40% 98%;
+    --color-primary-foreground: 222.2 47.4% 11.2%;
+    --color-secondary: 217.2 32.6% 17.5%;
+    --color-secondary-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+    --color-accent: 217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
+    --color-ring: 212.7 26.8% 83.9%;
+    --color-chart-1: 220 70% 50%;
+    --color-chart-2: 160 60% 45%;
+    --color-chart-3: 30 80% 55%;
+    --color-chart-4: 280 65% 60%;
+    --color-chart-5: 340 75% 55%;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-border: 0 0% 0%;
+      --color-ring: 0 0% 0%;
+    }
+    
+    .dark {
+      --color-border: 0 0% 100%;
+      --color-ring: 0 0% 100%;
+    }
+  }
+}
+
+/* Base styles with modern CSS features */
+@layer base {
+  /* CSS logical properties for better RTL support */
+  * {
+    box-sizing: border-box;
+    border-color: hsl(var(--color-border));
+  }
+  
+  /* Modern CSS reset */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Root element styles */
+  html {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    scroll-behavior: smooth;
+  }
+  
+  /* Body with container query support */
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variation-settings: normal;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Focus management for accessibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--color-ring));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  
+  /* Improved button and interactive element base styles */
+  button,
+  [role="button"] {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /* Better form element defaults */
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+  
+  /* Image optimization */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Typography improvements */
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+  
+  p {
+    text-wrap: pretty;
+    max-width: 65ch;
+  }
+  
+  /* Link styles */
+  a {
+    color: hsl(var(--color-primary));
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: from-font;
+  }
+  
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* Utility classes for modern CSS features */
+@layer utilities {
+  /* Container query utilities */
+  .container-query {
+    container-type: inline-size;
+  }
+  
+  /* Dynamic viewport units for mobile */
+  .h-screen-dynamic {
+    height: 100vh;
+    height: 100dvh;
+  }
+  
+  /* Improved text rendering */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  /* Modern color mixing utilities */
+  .bg-primary-mix {
+    background-color: color-mix(in hsl, hsl(var(--color-primary)), transparent 10%);
+  }
+  
+  /* Backdrop blur utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(12px) saturate(1.8);
+    background-color: hsl(var(--color-background) / 0.7);
+  }
+  
+  /* Custom scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--color-muted)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--color-muted));
+    border-radius: var(--radius-lg);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--color-muted-foreground));
+  }
+}
+
+/* Performance optimizations */
+@layer utilities {
+  /* GPU acceleration for smooth animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Content visibility for better rendering performance */
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
