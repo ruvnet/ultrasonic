@@ -1,6 +1,6 @@
 # 🔊 Ultrasonic Agentics
 
-**Hide AI Secret Commands & Data in Plain Sound** • Secure steganographic framework for embedding invisible commands in audio and video
+**Hide Secret AI Commands & Data in Plain Sound** Secure steganographic framework for embedding invisible commands in audio and video
 
 [![PyPI Version](https://img.shields.io/pypi/v/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
 [![Python Support](https://img.shields.io/pypi/pyversions/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
@@ -37,6 +37,43 @@ Ultrasonic Agentics is a cutting-edge steganography framework that embeds encryp
 - **Interactive Media**: Create audio/video content with hidden interactive elements
 - **Medical Device Control**: Secure command transmission in healthcare environments
 - **Proximity Detection**: Device-to-device communication for contact tracing and asset tracking
+
+
+## 🏗️ Architecture
+
+Ultrasonic Agentics uses a sophisticated signal processing pipeline:
+
+1. **Command Encryption**: AES-256-GCM with key derivation
+2. **Binary Encoding**: Efficient bit packing with error correction
+3. **FSK Modulation**: Frequency-shift keying at 18.5-19.5 kHz
+4. **Signal Injection**: Psychoacoustic masking for seamless integration
+5. **Adaptive Decoding**: ML-enhanced signal detection and extraction
+
+## 🔋 Low-Power Command & Control
+
+Ultrasonic Agentics is designed for energy-efficient operation, making it ideal for battery-powered and embedded systems:
+
+### Power Advantages
+
+- **Minimal Processing**: Simple FSK demodulation requires less CPU than complex protocols
+- **No Radio Transmission**: Acoustic transducers consume less power than RF transmitters
+- **Sleep Mode Compatible**: Wake devices only when ultrasonic commands detected
+- **Efficient Encoding**: Optimized bit rates reduce transmission time and power usage
+
+### Ideal for Embedded Systems
+
+- **Microcontroller Support**: Runs on Arduino, ESP32, Raspberry Pi, and similar platforms
+- **Low Memory Footprint**: Core decoder uses < 1KB RAM
+- **Battery Life**: Months of operation on coin cell batteries in listening mode
+- **Solar Powered**: Perfect for remote sensors and outdoor installations
+
+## 🔒 Security Features
+
+- **End-to-End Encryption**: Commands are never transmitted in plaintext
+- **Authentication**: HMAC prevents tampering and ensures message integrity
+- **Key Management**: Secure key generation and optional key rotation
+- **Obfuscation**: Multiple encoding layers prevent casual detection
+
 
 ## 🛠️ Quick Start
 
@@ -121,6 +158,14 @@ ultrasonic-api --host 0.0.0.0 --port 8000 --workers 4
 - `--amplitude`: Signal strength (0.0-1.0, default: 0.1)
 - `--verbose`: Detailed output
 - `--help`: Show help for any command
+
+## 📚 Documentation
+
+- [Getting Started Guide](docs/getting-started.md)
+- [API Reference](docs/api-reference.md)
+- [Security Best Practices](docs/security.md)
+- [MCP Integration](docs/mcp-integration.md)
+- [Examples & Tutorials](agentic_commands_stego/examples/)
 
 ### Basic Usage
 
@@ -208,49 +253,6 @@ embedder.embed_from_file(
     "output.mp4"
 )
 ```
-
-## 📚 Documentation
-
-- [Getting Started Guide](docs/getting-started.md)
-- [API Reference](docs/api-reference.md)
-- [Security Best Practices](docs/security.md)
-- [MCP Integration](docs/mcp-integration.md)
-- [Examples & Tutorials](agentic_commands_stego/examples/)
-
-## 🏗️ Architecture
-
-Ultrasonic Agentics uses a sophisticated signal processing pipeline:
-
-1. **Command Encryption**: AES-256-GCM with key derivation
-2. **Binary Encoding**: Efficient bit packing with error correction
-3. **FSK Modulation**: Frequency-shift keying at 18.5-19.5 kHz
-4. **Signal Injection**: Psychoacoustic masking for seamless integration
-5. **Adaptive Decoding**: ML-enhanced signal detection and extraction
-
-## 🔋 Low-Power Command & Control
-
-Ultrasonic Agentics is designed for energy-efficient operation, making it ideal for battery-powered and embedded systems:
-
-### Power Advantages
-
-- **Minimal Processing**: Simple FSK demodulation requires less CPU than complex protocols
-- **No Radio Transmission**: Acoustic transducers consume less power than RF transmitters
-- **Sleep Mode Compatible**: Wake devices only when ultrasonic commands detected
-- **Efficient Encoding**: Optimized bit rates reduce transmission time and power usage
-
-### Ideal for Embedded Systems
-
-- **Microcontroller Support**: Runs on Arduino, ESP32, Raspberry Pi, and similar platforms
-- **Low Memory Footprint**: Core decoder uses < 1KB RAM
-- **Battery Life**: Months of operation on coin cell batteries in listening mode
-- **Solar Powered**: Perfect for remote sensors and outdoor installations
-
-## 🔒 Security Features
-
-- **End-to-End Encryption**: Commands are never transmitted in plaintext
-- **Authentication**: HMAC prevents tampering and ensures message integrity
-- **Key Management**: Secure key generation and optional key rotation
-- **Obfuscation**: Multiple encoding layers prevent casual detection
 
 ## 🤝 Contributing
 
