@@ -11,6 +11,8 @@
 
 Ultrasonic Agentics is a cutting-edge steganography framework that embeds encrypted AI commands into ultrasonic frequencies (18-20 kHz) - inaudible to humans but detectable by your applications. Perfect for secure command transmission, covert communication channels, and innovative AI agent coordination.
 
+**100% untraceable ultra-secret communications at super low power.** Embed AI commands into any sound or video file and broadcast through any medium - unlicensed spectrum, VHF, AM/FM radio, Spotify streams, YouTube videos, or any audio channel. Commands hide in the background noise, completely invisible to detection.
+
 ### ✨ Key Features
 
 - **🔇 Inaudible Commands**: Embed data in 18-20 kHz frequencies beyond human hearing
