@@ -1,6 +1,6 @@
 # 🔊 Ultrasonic Agentics
 
-**Hide AI Commands in Plain Sound** • Secure steganographic framework for embedding invisible commands in audio and video
+**Hide AI Secret Commands & Data in Plain Sound** • Secure steganographic framework for embedding invisible commands in audio and video
 
 [![PyPI Version](https://img.shields.io/pypi/v/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
 [![Python Support](https://img.shields.io/pypi/pyversions/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
