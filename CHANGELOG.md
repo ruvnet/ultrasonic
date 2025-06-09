@@ -16,6 +16,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mobile SDK development
 - Hardware acceleration support
 
+## [1.0.1] - 2025-01-07
+
+### Added
+- **CLI tools**: Three command-line interfaces for easy access
+  - `ultrasonic-agentics`: Main CLI for embedding, decoding, and analyzing
+  - `ultrasonic-server`: MCP server for AI agent integration
+  - `ultrasonic-api`: REST API server
+- **Enhanced documentation**: Comprehensive README with usage examples
+- **Low-power operation support**: Documentation for embedded systems and IoT devices
+- **Broadcasting capabilities**: Support for various transmission mediums (VHF, AM/FM, streaming)
+- **Examples directory**: Sample audio/video files and Python scripts
+- **CLI quick reference**: Command options and examples in README
+
+### Changed
+- **README improvements**: Marketing-oriented with clear value proposition
+- **Documentation links**: Fixed paths to point to correct locations
+- **Use cases expanded**: Added emergency communications, underwater transmission, wildlife research
+- **Performance metrics**: Added power consumption and wake latency specifications
+
+### Fixed
+- **Documentation links**: Corrected broken links to actual file locations
+- **File embedding verification**: Improved validation for embedded commands
+- **Audio embedder**: Enhanced error handling and format warnings
+
 ## [1.0.0] - 2025-01-06
 
 ### Added

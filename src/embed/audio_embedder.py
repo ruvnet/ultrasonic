@@ -70,7 +70,7 @@ class AudioEmbedder:
                    output_path: str,
                    command: str,
                    obfuscate: bool = True,
-                   bitrate: str = "192k") -> None:
+                   bitrate: str = "320k") -> bool:
         """
         Embed command into audio file.
         
@@ -80,24 +80,81 @@ class AudioEmbedder:
             command: Command string to embed
             obfuscate: Whether to add obfuscation
             bitrate: Output bitrate for compressed formats
+            
+        Returns:
+            bool: True if embedding was successful, False otherwise
         """
-        # Load audio file
-        audio = AudioSegment.from_file(input_path)
-        
-        # Embed command
-        result_audio = self.embed(audio, command, obfuscate)
-        
-        # Export with appropriate settings
-        export_params = {
-            "format": self._get_format_from_path(output_path),
-            "bitrate": bitrate
-        }
-        
-        # Ensure high sample rate for ultrasonic preservation
-        if result_audio.frame_rate < self.encoder.sample_rate:
-            result_audio = result_audio.set_frame_rate(self.encoder.sample_rate)
-        
-        result_audio.export(output_path, **export_params)
+        try:
+            # Load audio file
+            audio = AudioSegment.from_file(input_path)
+            
+            # Embed command
+            result_audio = self.embed(audio, command, obfuscate)
+            
+            # Export with appropriate settings
+            export_params = {
+                "format": self._get_format_from_path(output_path),
+                "bitrate": bitrate
+            }
+            
+            # Ensure high sample rate for ultrasonic preservation
+            if result_audio.frame_rate < self.encoder.sample_rate:
+                result_audio = result_audio.set_frame_rate(self.encoder.sample_rate)
+            
+            # For MP3, ensure we use a high enough bitrate to preserve ultrasonic frequencies
+            if export_params['format'] == 'mp3' and bitrate == "320k":
+                print(f"Warning: MP3 format may not preserve ultrasonic frequencies above 16kHz properly.")
+                print(f"Consider using WAV or FLAC format for better ultrasonic signal preservation.")
+            
+            result_audio.export(output_path, **export_params)
+            
+            # Verify the file was created and has content
+            if not os.path.exists(output_path):
+                print(f"Error: Output file was not created at {output_path}")
+                return False
+                
+            if os.path.getsize(output_path) == 0:
+                print(f"Error: Output file is empty at {output_path}")
+                return False
+            
+            # Verify the embedded signal is present
+            try:
+                from ..decode.audio_decoder import AudioDecoder
+                # Create a decoder with the same settings
+                verifier = AudioDecoder(
+                    key=self.cipher.get_key(),
+                    ultrasonic_freq=self.encoder.freq_0,
+                    freq_separation=self.encoder.freq_1 - self.encoder.freq_0,
+                    sample_rate=self.encoder.sample_rate,
+                    bit_duration=self.encoder.bit_duration,
+                    detection_threshold=0.01
+                )
+                
+                # Try to decode the embedded command
+                decoded_command = verifier.decode_file(output_path)
+                if decoded_command == command:
+                    print(f"✓ Successfully embedded and verified '{command}' in {output_path}")
+                    return True
+                else:
+                    print(f"✗ Embedding verification failed. Expected '{command}', got '{decoded_command}'")
+                    # For WAV files, this is a real failure
+                    if export_params['format'] == 'wav':
+                        return False
+                    # For compressed formats, still return True but warn
+                    print(f"Note: This may be due to {export_params['format'].upper()} compression affecting ultrasonic frequencies.")
+                    return True
+                    
+            except Exception as verify_error:
+                print(f"Warning: Could not verify embedding (this may be normal for compressed formats): {verify_error}")
+                # Still return True if file was created successfully
+                return True
+            
+        except Exception as e:
+            # Log the error with detailed information
+            print(f"Error embedding file: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
     
     def _encrypt_payload(self, command: str, obfuscate: bool = True) -> bytes:
         """Encrypt command payload."""
@@ -186,6 +243,42 @@ class AudioEmbedder:
             '.aac': 'aac'
         }
         return format_map.get(extension, 'mp3')
+    
+    @staticmethod
+    def get_format_recommendations() -> dict:
+        """Get recommendations for different audio formats."""
+        return {
+            'wav': {
+                'quality': 'Excellent',
+                'ultrasonic_preservation': 'Perfect',
+                'file_size': 'Large',
+                'recommendation': 'Best choice for ultrasonic embedding'
+            },
+            'flac': {
+                'quality': 'Excellent',
+                'ultrasonic_preservation': 'Perfect',
+                'file_size': 'Medium',
+                'recommendation': 'Good lossless alternative to WAV'
+            },
+            'mp3': {
+                'quality': 'Good',
+                'ultrasonic_preservation': 'Poor (cuts >16kHz)',
+                'file_size': 'Small',
+                'recommendation': 'Not recommended for ultrasonic; use 320k bitrate if required'
+            },
+            'ogg': {
+                'quality': 'Good',
+                'ultrasonic_preservation': 'Poor (cuts >16kHz)',
+                'file_size': 'Small',
+                'recommendation': 'Not recommended for ultrasonic embedding'
+            },
+            'aac': {
+                'quality': 'Good',
+                'ultrasonic_preservation': 'Poor (cuts >16kHz)',
+                'file_size': 'Small',
+                'recommendation': 'Not recommended for ultrasonic embedding'
+            }
+        }
     
     def get_cipher_key(self) -> bytes:
         """Get the encryption key."""

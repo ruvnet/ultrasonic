@@ -54,9 +54,10 @@ class VideoEmbedder:
                    output_path: str,
                    command: str,
                    obfuscate: bool = True,
-                   audio_bitrate: str = "192k",
+                   audio_bitrate: str = "320k",
                    video_bitrate: str = None,
-                   temp_dir: str = None) -> None:
+                   temp_dir: str = None,
+                   preserve_ultrasonic: bool = True) -> bool:
         """
         Embed command into video file.
         
@@ -68,6 +69,9 @@ class VideoEmbedder:
             audio_bitrate: Audio bitrate for output
             video_bitrate: Video bitrate for output (None for auto)
             temp_dir: Temporary directory for intermediate files
+            
+        Returns:
+            bool: True if embedding was successful, False otherwise
         """
         if temp_dir is None:
             temp_dir = tempfile.gettempdir()
@@ -100,13 +104,24 @@ class VideoEmbedder:
                 )
             
             # Embed command in audio
-            self.audio_embedder.embed_file(
+            success = self.audio_embedder.embed_file(
                 input_path=temp_audio_input,
                 output_path=temp_audio_output,
                 command=command,
                 obfuscate=obfuscate,
                 bitrate=audio_bitrate
             )
+            
+            if not success:
+                print(f"Audio embedding failed for video: {input_path}")
+                # Clean up temporary files before returning
+                for temp_file in [temp_audio_input, temp_audio_output]:
+                    try:
+                        if os.path.exists(temp_file):
+                            os.remove(temp_file)
+                    except OSError:
+                        pass
+                return False
             
             # Load modified audio
             new_audio = AudioFileClip(temp_audio_output)
@@ -120,12 +135,27 @@ class VideoEmbedder:
                 final_video = video.set_audio(new_audio)
             
             # Prepare output parameters
-            output_params = {
-                'codec': 'libx264',
-                'audio_codec': 'aac',
-                'temp_audiofile': os.path.join(temp_dir, f"temp_audiofile_{os.getpid()}.m4a"),
-                'remove_temp': True
-            }
+            if preserve_ultrasonic:
+                # Use PCM audio codec to preserve ultrasonic frequencies
+                output_params = {
+                    'codec': 'libx264',
+                    'audio_codec': 'pcm_s16le',  # Uncompressed audio
+                    'temp_audiofile': os.path.join(temp_dir, f"temp_audiofile_{os.getpid()}.wav"),
+                    'remove_temp': True
+                }
+                print(f"Note: Using PCM audio codec to preserve ultrasonic frequencies.")
+                print(f"This will result in larger file sizes but better signal preservation.")
+            else:
+                # Use standard AAC codec (will lose ultrasonic frequencies)
+                output_params = {
+                    'codec': 'libx264',
+                    'audio_codec': 'aac',
+                    'audio_bitrate': audio_bitrate,
+                    'temp_audiofile': os.path.join(temp_dir, f"temp_audiofile_{os.getpid()}.m4a"),
+                    'remove_temp': True
+                }
+                print(f"Warning: Using AAC audio codec which may not preserve ultrasonic frequencies.")
+                print(f"Set preserve_ultrasonic=True for better signal preservation.")
             
             if video_bitrate:
                 output_params['bitrate'] = video_bitrate
@@ -144,6 +174,24 @@ class VideoEmbedder:
             video.close()
             new_audio.close()
             final_video.close()
+            
+            # Verify the file was created
+            if not os.path.exists(output_path):
+                print(f"Error: Output video file was not created at {output_path}")
+                return False
+                
+            if os.path.getsize(output_path) == 0:
+                print(f"Error: Output video file is empty at {output_path}")
+                return False
+                
+            print(f"✓ Successfully created video with embedded command at {output_path}")
+            return True
+            
+        except Exception as e:
+            print(f"Error embedding in video: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
             
         finally:
             # Clean up temporary files

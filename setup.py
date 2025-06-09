@@ -20,7 +20,7 @@ def get_version():
             version_match = re.search(r"__version__\s*=\s*['\"]([^'\"]*)['\"]", content)
             if version_match:
                 return version_match.group(1)
-    return '1.0.0'
+    return '1.0.1'
 
 
 def get_long_description():
