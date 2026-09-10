@@ -1,0 +1,2 @@
+cryptography==50.0.1
+numpy==2.4.3

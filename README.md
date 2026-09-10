@@ -1,424 +1,50 @@
-# 🔊 Ultrasonic Agentics
+![ultrasonic](docs/assets/header.svg)
 
-**Hide Secret AI Commands & Data in Plain Sound** Secure steganographic framework for embedding invisible commands in audio and video
+# ultrasonic v2 alpha
 
-[![PyPI Version](https://img.shields.io/pypi/v/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
-[![Python Support](https://img.shields.io/pypi/pyversions/ultrasonic-agentics.svg)](https://pypi.org/project/ultrasonic-agentics/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-blue.svg)](https://modelcontextprotocol.io)
+Ultrasonic v2 encrypts small data records, rejects replay, and measures a simulated acoustic channel. Received data stays data. It never runs commands or activates speakers or microphones.
 
-## 🚀 What is Ultrasonic Agentics?
+## Capabilities
 
-Ultrasonic Agentics is a cutting-edge steganography framework that embeds encrypted AI commands into ultrasonic frequencies (18-20 kHz) - inaudible to humans but detectable by your applications. Perfect for secure command transmission, covert communication channels, and innovative AI agent coordination.
+| Capability | Implemented behavior |
+| :--- | :--- |
+| Record protection | AES256 GCM authenticated records |
+| Replay protection | Private persistent SQLite ledger with serialized transactions |
+| Channel | Vectorized phase independent binary FSK at 500 raw bits/s |
+| Execution boundary | Inert JSON only, no shell or audio device access |
+| CLI and MCP | Local official SDK stdio server, fixed bounded actions |
+| Evaluation | Tests, reproducible benchmark and unsigned hash receipts |
+| Governance | MetaHarness profiles, Autogenous gate, explicit human promotion |
 
-**100% untraceable ultra-secret communications at super low power.** Embed AI commands into any sound or video file and broadcast through any medium - unlicensed spectrum, VHF, AM/FM radio, Spotify streams, YouTube videos, or any audio channel. Commands hide in the background noise, completely invisible to detection.
+## Install and use
 
-### ✨ Key Features
+Python 3.11 or newer and Node 22.16 or newer are required.
 
-- **🔇 Inaudible Commands**: Embed data in 18-20 kHz frequencies beyond human hearing
-- **🔐 Military-Grade Encryption**: AES-256 encryption with HMAC authentication
-- **🎵 Audio/Video Support**: Works with any audio or video file format
-- **🤖 AI-Ready**: MCP (Model Context Protocol) integration for AI agents
-- **⚡ Real-Time Processing**: Stream or batch process with minimal latency
-- **🔋 Low Power Operation**: Optimized for battery-powered devices and embedded systems
-- **🎯 High Reliability**: Advanced error correction ensures accurate decoding
-- **📡 No RF Interference**: Audio-based transmission avoids radio frequency congestion
-
-## 🎯 Use Cases
-
-- **AI Agent Coordination**: Transmit commands between AI systems covertly
-- **Low-Power Command & Control**: Energy-efficient device control for battery-powered IoT sensors and embedded systems
-- **Emergency Communications Systems**: Backup communication channel for first responders when primary networks fail
-- **Digital Watermarking**: Protect your audio/video content with invisible signatures
-- **Secure Communications**: Send encrypted messages through public audio channels
-- **Smart Home Automation**: Control lights, appliances, and security systems with inaudible commands
-- **Industrial Monitoring**: Transmit sensor data and control signals in noisy environments
-- **Access Control Systems**: Ultrasonic authentication tokens for secure facility access
-- **Underwater Communications**: Leverage ultrasonic frequencies for submarine data transmission
-- **Wildlife Research**: Covert data collection without disturbing animal behavior
-- **Interactive Media**: Create audio/video content with hidden interactive elements
-- **Medical Device Control**: Secure command transmission in healthcare environments
-- **Proximity Detection**: Device-to-device communication for contact tracing and asset tracking
-
-## 📚 Documentation
-
-- [Getting Started Guide](docs/getting-started.md)
-- [API Reference](agentic_commands_stego/docs/api-reference.md)
-- [Security Best Practices](agentic_commands_stego/docs/security.md)
-- [MCP Integration](agentic_commands_stego/docs/mcp-integration.md)
-- [Examples & Tutorials](agentic_commands_stego/examples/)
-
-
-## 🏗️ Architecture
-
-Ultrasonic Agentics uses a sophisticated signal processing pipeline:
-
-1. **Command Encryption**: AES-256-GCM with key derivation
-2. **Binary Encoding**: Efficient bit packing with error correction
-3. **FSK Modulation**: Frequency-shift keying at 18.5-19.5 kHz
-4. **Signal Injection**: Psychoacoustic masking for seamless integration
-5. **Adaptive Decoding**: ML-enhanced signal detection and extraction
-
-## 🔋 Low-Power Command & Control
-
-Ultrasonic Agentics is designed for energy-efficient operation, making it ideal for battery-powered and embedded systems:
-
-### Power Advantages
-
-- **Minimal Processing**: Simple FSK demodulation requires less CPU than complex protocols
-- **No Radio Transmission**: Acoustic transducers consume less power than RF transmitters
-- **Sleep Mode Compatible**: Wake devices only when ultrasonic commands detected
-- **Efficient Encoding**: Optimized bit rates reduce transmission time and power usage
-
-### Ideal for Embedded Systems
-
-- **Microcontroller Support**: Runs on Arduino, ESP32, Raspberry Pi, and similar platforms
-- **Low Memory Footprint**: Core decoder uses < 1KB RAM
-- **Battery Life**: Months of operation on coin cell batteries in listening mode
-- **Solar Powered**: Perfect for remote sensors and outdoor installations
-
-## 🔒 Security Features
-
-- **End-to-End Encryption**: Commands are never transmitted in plaintext
-- **Authentication**: HMAC prevents tampering and ensures message integrity
-- **Key Management**: Secure key generation and optional key rotation
-- **Obfuscation**: Multiple encoding layers prevent casual detection
-
-
-## 🛠️ Quick Start
-
-### Installation
-
-```bash
-# Install from PyPI
-pip install ultrasonic-agentics
-
-# With all features
-pip install ultrasonic-agentics[all]
+```sh
+python -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-v2.txt
+python -m pip install --no-deps .
+python -m ultrasonic_v2 fixture
+python -m unittest discover -s tests_v2 -v
+python -m ultrasonic_v2 benchmark
+npm ci --prefix .harness/runtime
+node .harness/runtime/cli.mjs status
+node .harness/runtime/cli.mjs benchmark
+RUV_ALLOW_VALIDATION=1 node .harness/runtime/cli.mjs test
+node .harness/runtime/cli.mjs mcp
 ```
 
-### Command Line Interface
+For a separate Python environment set `RUV_PYTHON` to its absolute executable path. MCP clients launch `node` with the absolute repository path to `.harness/runtime/cli.mjs` and argument `mcp`. The caller cannot supply commands, paths, keys or environment variables. Tools expose status, tests, benchmarks and domain operations. Read policy at `ruv://ultrasonic/policy`.
 
-After installation, three CLI tools are available:
+## MetaHarness and operations
 
-#### `ultrasonic-agentics` - Main CLI
-```bash
-# Show help and available commands
-ultrasonic-agentics --help
+See [generated harness](.harness/generated/README.md), [security and architecture](docs/ADR-001.md), [validation](docs/validation.md), and [benchmark evidence](docs/benchmark.json). Validation is opt in through the operator environment. Each process has a 30 second deadline, 32 KiB input and 64 KiB output limit; only one operation runs at a time. Receipts are local hashes, not signed attestations. CI builds a wheel and uploads it after passing tests. Publishing to a package registry remains an explicit release action.
 
-# Embed a command in an audio file
-ultrasonic-agentics embed -i input.mp3 -o output.mp3 -c "command:execute" -k your-secret-key
+## Limits
 
-# Embed with custom frequency and amplitude
-ultrasonic-agentics embed -i input.mp3 -o output.mp3 -c "deploy:v2" \
-  --freq 19000 --amplitude 0.05 --bit-duration 0.02
+The benchmark is an aligned numerical simulation. It does not establish room range, hardware compatibility, timing acquisition or ultrasonic inaudibility. Replay protection requires preserving the ledger for the full lifetime of a key. Never restore an older ledger while retaining the key. Legacy media code is archival and excluded from the v2 package; its unauthenticated HTTP launcher is retired.
 
-# Decode commands from audio
-ultrasonic-agentics decode -i output.mp3 -k your-secret-key
+## Related projects
 
-# Decode with verbose output
-ultrasonic-agentics decode -i output.mp3 -k your-secret-key --verbose
-
-# Analyze audio for ultrasonic content
-ultrasonic-agentics analyze -i audio.mp3
-
-# Analyze with spectrogram output
-ultrasonic-agentics analyze -i audio.mp3 --spectrogram --output report.png
-
-# Configure default settings
-ultrasonic-agentics config --freq 19000 --bit-rate 500
-
-# Show current configuration
-ultrasonic-agentics config --show
-```
-
-#### `ultrasonic-server` - MCP Server
-```bash
-# Start MCP server for AI agent integration
-ultrasonic-server
-
-# With custom port
-ultrasonic-server --port 8080
-```
-
-#### `ultrasonic-api` - REST API Server
-```bash
-# Start REST API server
-ultrasonic-api
-
-# With custom configuration
-ultrasonic-api --host 0.0.0.0 --port 8000 --workers 4
-```
-
-### CLI Quick Reference
-
-| Command | Description | Example |
-|---------|-------------|---------|
-| `embed` | Hide command in audio | `ultrasonic-agentics embed -i in.mp3 -o out.mp3 -c "cmd"` |
-| `decode` | Extract hidden command | `ultrasonic-agentics decode -i out.mp3 -k key` |
-| `analyze` | Detect ultrasonic content | `ultrasonic-agentics analyze -i audio.mp3` |
-| `config` | Manage settings | `ultrasonic-agentics config --show` |
-
-**Common Options:**
-- `-i, --input`: Input audio/video file
-- `-o, --output`: Output file path
-- `-c, --command`: Command to embed
-- `-k, --key`: Encryption key (auto-generated if not provided)
-- `--freq`: Ultrasonic frequency (default: 18500 Hz)
-- `--amplitude`: Signal strength (0.0-1.0, default: 0.1)
-- `--verbose`: Detailed output
-- `--help`: Show help for any command
-
-
-### Basic Usage
-
-```python
-from agentic_commands_stego import AudioEmbedder, AudioDecoder
-
-# Embed a command
-embedder = AudioEmbedder()
-command = "execute: deploy_model --version 2.0"
-secure_audio = embedder.embed_from_file("original.mp3", command)
-secure_audio.export("output.mp3", format="mp3")
-
-# Decode the command
-decoder = AudioDecoder(embedder.cipher.key)
-decoded_command = decoder.decode_from_file("output.mp3")
-print(f"Hidden command: {decoded_command}")
-```
-
-## 🎮 Interactive Web Interface
-
-Experience Ultrasonic Agentics through our modern React-based UI:
-
-```bash
-# Start the web interface
-cd ui && npm install && npm run dev
-```
-
-Visit `http://localhost:5173` to:
-- 🎙️ Record and embed commands in real-time
-- 📁 Process audio/video files with drag-and-drop
-- 🔍 Analyze ultrasonic frequencies with live visualization
-- 🔐 Configure encryption and encoding parameters
-- 📊 Monitor signal quality and decoding confidence
-
-## 🤖 MCP Integration
-
-Use Ultrasonic Agentics with AI agents via Model Context Protocol:
-
-```bash
-# Start the MCP server
-ultrasonic-server
-
-# Use with Claude or other MCP-compatible AI
-ultrasonic-agentics encode "AI: process customer data" audio.mp3
-ultrasonic-agentics decode audio.mp3
-```
-
-## 🔧 Advanced Features
-
-### Streaming API
-
-```python
-# Real-time encoding for live audio
-from agentic_commands_stego import StreamEncoder
-
-encoder = StreamEncoder()
-for chunk in audio_stream:
-    encoded_chunk = encoder.process(chunk, command_queue.get())
-    output_stream.write(encoded_chunk)
-```
-
-### REST API
-
-```bash
-# Start the API server
-ultrasonic-api
-
-# Embed via API
-curl -X POST http://localhost:8000/embed \
-  -F "audio=@input.mp3" \
-  -F "command=deploy:production" \
-  -F "key=your-secret-key"
-```
-
-### Video Support
-
-```python
-# Embed in video files
-from agentic_commands_stego import VideoEmbedder
-
-embedder = VideoEmbedder()
-embedder.embed_from_file(
-    "video.mp4",
-    "AI: analyze frames for objects",
-    "output.mp4"
-)
-```
-
-## 📝 Examples
-
-### Quick Start with Sample Files
-
-The `/examples` directory contains sample media files for testing:
-
-```bash
-# Navigate to examples directory
-cd examples/
-
-# Test embedding a command in the sample audio file
-ultrasonic-agentics embed -i sample_audio.mp3 -o audio_with_command.mp3 -c "hello world"
-
-# Decode the embedded command
-ultrasonic-agentics decode -i audio_with_command.mp3
-
-# Test with the sample video file
-ultrasonic-agentics embed -i sample_video.mp4 -o video_with_command.mp4 -c "AI: process video"
-ultrasonic-agentics decode -i video_with_command.mp4
-```
-
-### Python Examples
-
-#### Basic Encoding/Decoding
-```python
-from agentic_commands_stego.embed.audio_embedder import AudioEmbedder
-from agentic_commands_stego.decode.audio_decoder import AudioDecoder
-
-# Create embedder with a specific key
-key = b'my-secret-key-32bytes-padding!!!'  # 32 bytes for AES-256
-embedder = AudioEmbedder(key=key)
-decoder = AudioDecoder(key=key)
-
-# Embed a command
-success = embedder.embed_file(
-    'examples/sample_audio.mp3',
-    'output_with_command.mp3',
-    'execute: deploy --version 2.0'
-)
-
-# Decode the command
-command = decoder.decode_file('output_with_command.mp3')
-print(f"Decoded: {command}")
-```
-
-#### Real-time Audio Processing
-```python
-from agentic_commands_stego.decode.audio_decoder import AudioDecoder
-
-# Set up real-time listener
-decoder = AudioDecoder(key=your_key)
-
-def on_command_detected(command):
-    print(f"Detected command: {command}")
-    # Process the command
-    if command.startswith("execute:"):
-        action = command.split(":", 1)[1]
-        # Perform action
-
-# Start listening through microphone
-decoder.start_listening(callback=on_command_detected)
-```
-
-#### Batch Processing
-```python
-import os
-from agentic_commands_stego.embed.audio_embedder import AudioEmbedder
-
-embedder = AudioEmbedder()
-
-# Process multiple files
-audio_files = ['file1.mp3', 'file2.wav', 'file3.ogg']
-commands = ['cmd1', 'cmd2', 'cmd3']
-
-for audio_file, command in zip(audio_files, commands):
-    output = f"secured_{audio_file}"
-    embedder.embed_file(audio_file, output, command)
-    print(f"Processed: {audio_file} -> {output}")
-```
-
-#### Custom Frequency Configuration
-```python
-from agentic_commands_stego.embed.ultrasonic_encoder import UltrasonicEncoder
-from agentic_commands_stego.decode.ultrasonic_decoder import UltrasonicDecoder
-
-# Use lower frequencies (17-18 kHz) for better speaker compatibility
-encoder = UltrasonicEncoder(
-    freq_0=17000,  # Frequency for bit '0'
-    freq_1=18000,  # Frequency for bit '1'
-    amplitude=0.15,  # Slightly higher amplitude
-    bit_duration=0.02  # Slower bit rate for reliability
-)
-
-decoder = UltrasonicDecoder(
-    freq_0=17000,
-    freq_1=18000,
-    detection_threshold=0.05
-)
-
-# Encode and decode
-signal = encoder.encode_payload(b"low-freq test")
-decoded = decoder.decode_payload(signal)
-```
-
-### Sample Files Available
-
-| File | Description | Duration | Use Case |
-|------|-------------|----------|----------|
-| `sample_audio.mp3` | Crowd cheering sound | 27.74s | Testing longer commands |
-| `sample_video.mp4` | Big Buck Bunny clip | 5.31s | Video embedding tests |
-
-### More Examples
-
-Check out the `/examples` directory for more detailed examples:
-- `basic_encoding.py` - Comprehensive encoding/decoding tests
-- `audio_file_processing.py` - Batch processing examples
-- `api_client.py` - REST API usage examples
-- `test_hello_world.py` - Simple embedding verification
-
-## 🤝 Contributing
-
-We welcome contributions!
-
-```bash
-# Development setup
-git clone https://github.com/ultrasonic-agentics/ultrasonic-agentics
-cd ultrasonic-agentics
-pip install -e ".[dev]"
-pytest
-```
-
-## 📊 Performance
-
-- **Embedding Speed**: ~100x realtime on modern CPUs
-- **Bit Rate**: 100-1000 bps depending on configuration
-- **Frequency Range**: 18-20 kHz (customizable)
-- **Success Rate**: >99.9% in typical conditions
-- **Power Consumption**: < 10mW in listening mode on embedded devices
-- **Wake Latency**: < 50ms from sleep to command detection
-- **Range**: 1-10 meters depending on environment and transducer
-
-## 🌟 Roadmap
-
-- [ ] Neural network-based decoding for noisy environments
-- [ ] Bluetooth beacon mode for proximity commands
-- [ ] Multi-channel encoding for higher bandwidth
-- [ ] Hardware acceleration support (GPU/TPU)
-- [ ] Mobile SDKs (iOS/Android)
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## 🙏 Acknowledgments
-
-Built with cutting-edge audio processing libraries including NumPy, SciPy, PyDub, and Librosa. Special thanks to the MCP community for protocol development.
-
----
-
-<p align="center">
-  <b>Ready to hide commands in plain sound?</b><br>
-  <a href="https://github.com/ultrasonic-agentics/ultrasonic-agentics">Get Started</a> •
-  <a href="agentic_commands_stego/docs/">Read Docs</a> •
-  <a href="https://github.com/ultrasonic-agentics/ultrasonic-agentics/issues">Report Bug</a>
-</p>
+[RuFlo](https://github.com/ruvnet/ruflo) coordinates work. [MetaHarness](https://github.com/ruvnet/metaharness) supplies host profiles and evaluation. [Autogenous](https://github.com/ruvnet/autogenous) supplies promotion gates. [RuVector](https://github.com/ruvnet/ruvector) supplies retrieval primitives. [Federation](https://x.ruv.io/mcp) carries observations, never implicit execution authority. [Revival tracking](https://github.com/ruvnet/ultrasonic/issues/1).

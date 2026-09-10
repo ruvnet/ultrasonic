@@ -1,0 +1,1 @@
+{"seed": 42, "sample_rate": 48000, "raw_bps": 500, "results": [{"snr_db": 20, "bit_errors": 0, "bits": 1024}, {"snr_db": 5, "bit_errors": 0, "bits": 1024}, {"snr_db": -5, "bit_errors": 0, "bits": 1024}, {"snr_db": -15, "bit_errors": 244, "bits": 1024}], "scope": "aligned numerical simulation only; no hardware, synchronization or channel acquisition validation"}

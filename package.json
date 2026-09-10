@@ -1,0 +1,7 @@
+{
+  "name": "ultrasonic-validation",
+  "private": true,
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests_v2 -v"
+  }
+}
